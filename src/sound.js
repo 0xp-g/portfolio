@@ -11,8 +11,8 @@ let enabled = (() => { try { return localStorage.getItem('sound') === 'on' } cat
 
 let offline = false
 
-function ac() {
-  if (offline) return ctx
+// Create the context without trying to start it (allowed before any interaction).
+function rawCtx() {
   if (!ctx) {
     const AC = window.AudioContext || window.webkitAudioContext
     if (!AC) return null
@@ -22,6 +22,12 @@ function ac() {
     master.gain.value = 0.5
     master.connect(comp).connect(ctx.destination)
   }
+  return ctx
+}
+
+function ac() {
+  if (offline) return ctx
+  if (!rawCtx()) return null
   if (ctx.state === 'suspended') {
     // Before the visitor has interacted, browsers keep audio suspended. Scheduling
     // sounds now would make them all fire at once on the first click, so skip instead.
@@ -35,7 +41,7 @@ function ac() {
 const SAMPLE_URLS = ['/sfx/return-by-death.mp3', '/sfx/return-by-death.ogg', '/sfx/return-by-death.wav']
 let sample = null        // decoded AudioBuffer, once loaded
 let sampleInfo = null    // { onset, end, gain }: measured from the file itself
-let sampleTried = false
+let samplePromise = null
 
 // Find where the sound really starts and ends (files often carry silence)
 // and how much gain brings its peak to a consistent level.
@@ -58,9 +64,12 @@ function analyse(buf) {
   }
 }
 
-async function loadSample(c) {
-  if (sampleTried) return
-  sampleTried = true
+function loadSample(c) {
+  if (!samplePromise) samplePromise = fetchSample(c)
+  return samplePromise
+}
+
+async function fetchSample(c) {
   for (const url of SAMPLE_URLS) {
     try {
       const r = await fetch(url)
@@ -74,6 +83,30 @@ async function loadSample(c) {
 }
 
 export const isSoundOn = () => enabled
+
+const wait = (ms) => new Promise((r) => setTimeout(r, ms))
+
+// After a refresh: start fetching the sample and see whether this browser lets
+// audio start without a click (some do for sites you visit often).
+export async function tryAutoplay() {
+  if (!enabled) return false
+  const c = rawCtx(); if (!c) return false
+  loadSample(c)
+  if (c.state !== 'running') {
+    try { await Promise.race([c.resume(), wait(250)]) } catch { /* blocked */ }
+  }
+  if (c.state !== 'running') return false
+  await Promise.race([loadSample(c), wait(1200)])
+  return true
+}
+
+// Call from inside a click/keypress: starts audio and waits (briefly) for the sample.
+export async function unlockAudio() {
+  const c = rawCtx(); if (!c) return
+  const p = loadSample(c)
+  try { await Promise.race([c.resume(), wait(600)]) } catch { /* ignore */ }
+  await Promise.race([p, wait(1200)])
+}
 export function setSound(on) {
   enabled = on
   try { localStorage.setItem('sound', on ? 'on' : 'off') } catch { /* ignore */ }

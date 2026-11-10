@@ -64,7 +64,7 @@ export default function App() {
     const id = setTimeout(() => {
       let n = 1
       try { n = Number(localStorage.getItem('loop')) || 1 } catch { /* ignore */ }
-      window.dispatchEvent(new CustomEvent('return-by-death', { detail: { loop: n } }))
+      window.dispatchEvent(new CustomEvent('return-by-death', { detail: { loop: n, gate: true } }))
     }, 200)
     return () => clearTimeout(id)
   }, [])

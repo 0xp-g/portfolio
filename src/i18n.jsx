@@ -45,6 +45,7 @@ const UI = {
     'nf.now': '↺ return now',
     'ach.title': 'Achievement unlocked', 'ach.progress': 'achievements', 'ach.locked': '???',
     'sound.on': 'sound on', 'sound.off': 'sound off',
+    'rbd.gate': 'Click to return',
   },
   ja: {
     'nav.about': '紹介', 'nav.projects': '作品', 'nav.stress': '負荷試験', 'nav.stack': '技術',
@@ -89,6 +90,7 @@ const UI = {
     'nf.now': '↺ 今すぐ戻る',
     'ach.title': '実績解除', 'ach.progress': '実績', 'ach.locked': '？？？',
     'sound.on': 'サウンド オン', 'sound.off': 'サウンド オフ',
+    'rbd.gate': 'クリックして戻る',
   },
 }
 
