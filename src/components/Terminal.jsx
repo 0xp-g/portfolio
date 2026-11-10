@@ -57,7 +57,7 @@ export default function Terminal({ onOpenProject, loop }) {
           '  skills         the stack',
           '  experience     git log, but for a person',
           '  contact        how to reach me',
-          '  resume         open the PDF',
+          '  resume [ja]    open the PDF (ja = 履歴書)',
           '  github / linkedin',
           '  lang en|ja     switch language · 言語切替',
           '  stress         go break my queue system',
@@ -75,7 +75,7 @@ export default function Terminal({ onOpenProject, loop }) {
         res = out(...profile.about)
         break
       case 'ls':
-        res = out({ t: 'about.txt  projects/  skills.json  resume.pdf  contact.md', c: 'cyan' })
+        res = out({ t: 'about.txt  projects/  skills.json  resume.pdf  履歴書.pdf  contact.md', c: 'cyan' })
         break
       case 'projects':
         res = out(
@@ -105,8 +105,11 @@ export default function Terminal({ onOpenProject, loop }) {
         res = out(`  email     ${profile.email}`, `  github    ${profile.github}`, `  linkedin  ${profile.linkedin}`)
         break
       case 'resume':
-        window.open(profile.resumeUrl, '_blank', 'noopener')
-        res = out({ t: 'opening resume.pdf…', c: 'ok' })
+      {
+        const ja = arg ? ['ja', 'jp', '日本語'].includes(arg) : lang === 'ja'
+        window.open(ja ? profile.resumeJaUrl : profile.resumeUrl, '_blank', 'noopener')
+        res = out({ t: ja ? 'opening 履歴書.pdf…' : "opening resume.pdf…  (Japanese: 'resume ja')", c: 'ok' })
+      }
         break
       case 'github':
       case 'linkedin':

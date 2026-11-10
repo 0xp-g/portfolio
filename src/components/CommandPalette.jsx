@@ -43,7 +43,8 @@ export default function CommandPalette({ open, onClose, onOpenProject }) {
       { group: 'Actions', label: isSoundOn() ? 'Turn sound off' : 'Turn sound on', hint: '♪ synthesized', icon: '♪', run: () => { const on = !isSoundOn(); setSound(on); if (on) unlock('sound') } },
       { group: 'Links', label: 'GitHub', hint: '0xp-g', icon: '↗', run: () => window.open(profile.github, '_blank', 'noopener') },
       { group: 'Links', label: 'LinkedIn', icon: '↗', run: () => window.open(profile.linkedin, '_blank', 'noopener') },
-      { group: 'Links', label: 'Resume (PDF)', icon: '↓', run: () => window.open(profile.resumeUrl, '_blank', 'noopener') },
+      { group: 'Links', label: 'Resume (PDF)', hint: 'English', icon: '↓', run: () => window.open(profile.resumeUrl, '_blank', 'noopener') },
+      { group: 'Links', label: 'Japanese resume (PDF)', hint: '履歴書・職務経歴書', icon: '↓', run: () => window.open(profile.resumeJaUrl, '_blank', 'noopener') },
     ]
   }, [onOpenProject, lang, setLang, open])
 

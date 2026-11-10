@@ -18,6 +18,7 @@ export const profile = {
   github: 'https://github.com/0xp-g',
   linkedin: 'https://linkedin.com/in/yogesh-o-k-737320328',
   resumeUrl: '/resume.pdf',
+  resumeJaUrl: '/resume-ja.pdf', // 履歴書・職務経歴書 (web version: no phone, birth date or photo)
   about: [
     "I'm a Computer Science student at Chennai Institute of Technology (graduating 2028) who likes the part of software most people never see: the queues, workers, schemas and sockets that keep everything else standing.",
     'Most of what I build starts with a "how would this actually work in production?" question, like isolating untrusted Docker builds, keeping queue positions consistent under concurrency, or making an LLM answer with file-and-line citations instead of guesses.',

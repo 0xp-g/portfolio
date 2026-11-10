@@ -35,6 +35,7 @@ export default function Contact() {
           <a href={profile.github} target="_blank" rel="noreferrer"><span>github</span><span aria-hidden="true">↗</span></a>
           <a href={profile.linkedin} target="_blank" rel="noreferrer"><span>linkedin</span><span aria-hidden="true">↗</span></a>
           <a href={profile.resumeUrl} target="_blank" rel="noreferrer"><span>resume.pdf</span><span aria-hidden="true">↓</span></a>
+          <a href={profile.resumeJaUrl} target="_blank" rel="noreferrer" lang="ja"><span>履歴書.pdf</span><span aria-hidden="true">↓</span></a>
         </div>
         <p className="tbc mono">
           <span className="tbc-arrow" aria-hidden="true">◀━━</span> {t('contact.tbc')}
