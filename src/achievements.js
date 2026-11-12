@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 
 export const ACHIEVEMENTS = [
   { id: 'polyglot', icon: '文', en: 'Polyglot', ja: '言語の壁を越えて', hint: 'Switched to 日本語', jaHint: '日本語に切り替えた' },
-  { id: 'limit', icon: '⚡', en: 'Limit Breaker', ja: '限界突破', hint: 'Unleashed limit break', jaHint: 'リミットブレイクを発動した' },
+  { id: 'limit', icon: '⚡', en: 'Limit Breaker', ja: '限界突破', hint: 'Unleashed limit break', jaHint: '限界突破を発動した' },
   { id: 'broke', icon: '💥', en: 'Broke the System', ja: 'システム崩壊', hint: 'Sent a 100-person stampede', jaHint: '100人を殺到させた' },
   { id: 'rbd', icon: '↺', en: 'Return by Death', ja: '死に戻り', hint: 'Returned to a checkpoint', jaHint: 'チェックポイントに戻った' },
   { id: 'shell', icon: '>_', en: 'Shell Whisperer', ja: 'シェル使い', hint: 'Ran 5 terminal commands', jaHint: 'コマンドを5回実行した' },

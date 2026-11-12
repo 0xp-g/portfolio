@@ -2,7 +2,7 @@ import { skills } from '../data.js'
 
 const PHRASES = [
   'SYSTEM DESIGN', 'システム設計', 'ASYNC', '非同期', 'REALTIME', 'リアルタイム', 'RETRY FROM ZERO', 'ゼロから再試行',
-  'IDEMPOTENT', '冪等', 'SHIP IT', '出荷', 'NO GUESSES · ONLY CITATIONS', '引用', 'LOAD TESTED', '負荷試験',
+  'IDEMPOTENT', '冪等', 'SHIP IT', 'リリース', 'NO GUESSES · ONLY CITATIONS', '推測より引用', 'LOAD TESTED', '負荷試験済み',
 ]
 
 function Tape({ items, className, sep }) {

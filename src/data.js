@@ -28,13 +28,13 @@ export const profile = {
     role: 'バックエンド／システムエンジニア',
     roles: ['非同期ビルドパイプライン', 'リアルタイムキュー', '出典付きRAG', 'マルチテナントAPI', 'スケールするシステム'],
     tagline:
-      'チェンナイでコンピュータサイエンスを学びながら、負荷がかかっても落ち着いて動くバックエンドを作っています。ワーカーキュー、リアルタイム配信、そして根拠を示せる検索エンジン。',
+      'チェンナイでコンピュータサイエンスを学びながら、高負荷でも安定して動くバックエンドを開発しています。ワーカーキュー、リアルタイム配信、根拠を示して答える検索エンジンなど。',
     status: 'インターン・共同開発の機会を募集中',
     location: 'インド・チェンナイ',
     about: [
       'チェンナイ工科大学でコンピュータサイエンスを専攻している学生です（2028年卒業予定）。キュー、ワーカー、スキーマ、ソケットなど、多くの人が目にしない「システムを支える部分」が好きです。',
-      '作るものはいつも「本番環境で本当に動くか？」という問いから始まります。信頼できないDockerビルドの隔離、並行処理下でのキュー順位の整合性、そしてLLMに推測ではなくファイルと行番号を引用して答えさせること。',
-      'コード以外では、LeetCode Knight（900問以上）、日本語学習者（JLPT N3合格、次はN2）、そしてアニメと物語が大好きで、一番好きな作品は『Re:ゼロから始める異世界生活』。「失敗して、学んで、ゼロからやり直す」は、リトライ安全な分散ジョブの設計思想でもあります。',
+      '私の開発は、いつも「本番環境で本当に動くか？」という問いから始まります。信頼できないDockerビルドをどう隔離するか、並行処理の中でキューの順番をどう正しく保つか、LLMに推測ではなくファイル名と行番号を引用して答えさせるにはどうするか。',
+      'コード以外では、LeetCodeでKnightを獲得し（900問以上）、日本語も勉強しています（JLPT N3合格、次はN2）。アニメや物語が大好きで、一番好きな作品は『Re:ゼロから始める異世界生活』です。「失敗して、学んで、ゼロからやり直す」という考え方は、リトライ安全な分散ジョブの設計にも通じます。',
     ],
   },
 }
@@ -66,7 +66,7 @@ export const character = {
     ['Frontend', 'フロント', 62],
   ],
   moves: [
-    { name: 'Clone Worker Swarm', jp: '分身ワーカー', desc: 'Runs clone → parse → embed pipelines on parallel Celery workers, off the request path.', jaDesc: 'clone→解析→埋め込みのパイプラインを並列Celeryワーカーで実行し、リクエストを止めない。' },
+    { name: 'Clone Worker Swarm', jp: '分身ワーカー', desc: 'Runs clone → parse → embed pipelines on parallel Celery workers, off the request path.', jaDesc: 'clone→解析→埋め込みのパイプラインを並列Celeryワーカーで実行し、リクエスト処理を妨げない。' },
     { name: 'Transaction Barrier', jp: 'トランザクション結界', desc: 'SKIP LOCKED and compare-and-set: two counters never call the same person.', jaDesc: 'SKIP LOCKEDと比較交換で、2つの窓口が同じ人を呼ぶことはない。' },
     { name: 'Citation Eye', jp: '引用の眼', desc: 'Answers point to the exact file and line, never guesses.', jaDesc: '推測せず、正確なファイルと行を示す。' },
     { name: 'Return to Zero', jp: 'ゼロからの再試行', desc: 'Idempotent, retry-safe jobs: a redelivered task is a no-op, and a failed re-index rolls back to the last good index.', jaDesc: '冪等でリトライ安全なジョブ。再配信されたタスクは何もせず、失敗した再インデックスは直前の正常な状態に戻る。' },
@@ -139,7 +139,7 @@ export const projects = [
     tech: ['FastAPI', 'Docker', 'Celery', 'Redis', 'PostgreSQL', 'Nginx', 'MinIO', 'WebSockets', 'GitHub Webhooks'],
     ja: {
       kind: 'デプロイエンジン',
-      tagline: 'GitHubにpushすると共有URLが発行される。リソース制限付きDockerビルド、ライブログ、ワイルドカードNginxルート1本。',
+      tagline: 'GitHubにpushするだけで共有URLを発行。リソース制限付きのDockerビルド、リアルタイムのビルドログ、ワイルドカード指定のNginxルート1本で運用。',
       points: [
         '正確なコミットをチェックアウトし、プロジェクトごとのメモリ・CPU・PID・タイムアウト制限付きの使い捨てDockerコンテナでビルド（メモリ超過・タイムアウトの強制終了をテスト済み）。',
         'GitHub Webhookは生のリクエストボディでHMAC検証し、配信IDで重複排除。Celery/Redisで非同期ビルドし、WebSocketでログを配信、履歴はPostgreSQLに保存。',
@@ -215,7 +215,7 @@ export const projects = [
       tagline: 'チーム向けのインシデント・リリース管理。サービス、インシデント、タイムライン、ポストモーテム、ロールバックを組織ごとに分離。',
       points: [
         '組織がユーザー、ロール、チーム、サービス、インシデント、タイムライン、ポストモーテム、ロールバック付きリリースを管理（履歴は上書きしない）。',
-        'リクエストごとにユーザーを再読込するJWT認証、レベル制RBAC、テナント単位の認可（他組織には404）、Alembicマイグレーション、単一トランザクションのワークフロー。',
+        'リクエストごとにユーザーを再読み込みするJWT認証、レベル制RBAC、テナント単位の認可（他組織には404）、Alembicマイグレーション、単一トランザクションのワークフロー。',
         'コミット後のRedisイベントを組織単位のWebSocketで配信。Docker ComposeとGitHub Actions CI、105件の自動テスト（RBACマトリクス72件・テナント越境攻撃10件を含む）。',
       ],
       metrics: ['自動テスト', 'RBACマトリクス', 'テナント越境の遮断'],
@@ -292,7 +292,7 @@ export const log = [
     body: ['CGPA 7.98', 'DSA · OOP · DBMS · Operating Systems · Computer Networks · Machine Learning · System Design'],
     ja: {
       when: '2028年卒業予定',
-      title: 'チェンナイ工科大学 コンピュータサイエンス工学科（B.E.）',
+      title: 'チェンナイ工科大学 コンピュータ科学工学科（B.E.）',
       body: ['CGPA 7.98', 'DSA・OOP・DBMS・OS・ネットワーク・機械学習・システム設計'],
     },
   },
