@@ -10,7 +10,7 @@ import { useLang } from '../i18n.jsx'
 // `gate` (used on page refresh): if sound is on but the browser hasn't allowed audio yet,
 // hold on the opening frame until the visitor clicks, so the cue can play with sound.
 export default function RewindOverlay() {
-  const { t } = useLang()
+  const { t, lang } = useLang()
   const [run, setRun] = useState(null)
   const [gate, setGate] = useState(null)
   const timers = useRef([])
@@ -94,7 +94,7 @@ export default function RewindOverlay() {
         <p className="gate-hint">
           <span className="gate-pulse" aria-hidden="true" />
           {t('rbd.gate')}
-          <span className="mono" lang="ja">クリックで戻る</span>
+          {lang === 'en' && <span className="mono" lang="ja">クリックで戻る</span>}
         </p>
       </div>
     )
