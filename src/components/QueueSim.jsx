@@ -16,7 +16,7 @@ const TXT = {
     noshow: 'no-show chaos', auto: 'auto arrivals', reset: '↺ return to checkpoint',
     q: 'in queue', served: 'served', thr: 'throughput', rate: 'est. service rate', eta: 'ETA for next joiner', err: 'prediction error',
     perMin: '/min', min: 'min', events: 'websocket events', chart: 'predicted vs actual wait (min)', pred: 'predicted', act: 'actual',
-    note: 'Toy simulation of the real logic. The production version runs on FastAPI + Redis + WebSockets:', src: 'source',
+    note: 'Toy simulation of the real logic. The real system runs on FastAPI + PostgreSQL (SKIP LOCKED) + Redis + WebSockets:', src: 'source',
     learning: 'learning…', counter: 'counter', paused: 'paused · scroll here to resume',
   },
   ja: {
@@ -25,7 +25,7 @@ const TXT = {
     noshow: '不在者カオス', auto: '自動来客', reset: '↺ チェックポイントに戻る',
     q: '待機中', served: '対応済み', thr: 'スループット', rate: '推定処理速度', eta: '次の人の予測待ち時間', err: '予測誤差',
     perMin: '/分', min: '分', events: 'WebSocketイベント', chart: '予測と実際の待ち時間（分）', pred: '予測', act: '実際',
-    note: '実際のロジックを簡略化したシミュレーションです。本番版は FastAPI + Redis + WebSocket で動作：', src: 'ソース',
+    note: '実際のロジックを簡略化したシミュレーションです。実システムは FastAPI + PostgreSQL（SKIP LOCKED）+ Redis + WebSocket で動作：', src: 'ソース',
     learning: '学習中…', counter: '窓口', paused: '一時停止中・スクロールで再開',
   },
 }

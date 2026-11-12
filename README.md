@@ -15,7 +15,7 @@ Theme colors are CSS variables at the top of `src/styles.css`.
 - **Witch's-aura theme**: violet/black palette (tokens at the top of `src/styles.css`) with drifting miasma fog in the hero
 - **Sound** (off by default, nav toggle): every effect is synthesized live in `src/sound.js` (Web Audio, no audio files)
 - **死に戻り / return by death**: desaturate → clock spins backwards → snap → back to checkpoint (terminal `return-by-death`, stress-test reset, command menu, 404 page)
-- **Case studies** at `/projects/<id>`: content lives in `src/cases.js` (⚠ review the drafted decisions and retro sections)
+- **Case studies** at `/projects/<id>`: content lives in `src/cases.js` (numbers match each project's docs/RESULTS.md; includes test conditions and real bugs)
 - **Achievements**: 10 hidden badges with unlock toasts, progress in the footer, `achievements` in the terminal
 - **404 page** that returns you to the checkpoint
 - **Social previews**: `public/og.png` (1200×630), Open Graph + Twitter tags, JSON-LD

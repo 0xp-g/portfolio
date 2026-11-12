@@ -98,10 +98,27 @@ export default function CaseStudy({ id }) {
           ))}
         </div>
         <ul className="proj-points">{L(p, 'points').map((pt, i) => <li key={i}>{pt}</li>)}</ul>
+        {c.measured && <p className="case-note mono"><b>{t('case.measured')}</b> {c.measured}</p>}
       </section>
 
+      {c.bugs?.length > 0 && (
+        <section className="case-sec reveal">
+          <h2 className="case-h"><span className="mono">05</span> {t('case.bugs')}</h2>
+          <div className="decisions">
+            {c.bugs.map((d, i) => (
+              <div key={d.title} className="decision">
+                <span className="dec-n mono">{t('case.bug')} {String(i + 1).padStart(2, '0')}</span>
+                <h3>{d.title}</h3>
+                <p>{d.what}</p>
+                <p className="dec-trade"><b className="mono">{t('case.fix')}</b> {d.fix}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
+
       <section className="case-sec reveal">
-        <h2 className="case-h"><span className="mono">05</span> {t('case.retro')}</h2>
+        <h2 className="case-h"><span className="mono">{c.bugs?.length > 0 ? '06' : '05'}</span> {t('case.retro')}</h2>
         <ol className="retro">
           {c.retro.map((r, i) => <li key={i}><span className="mono accent">↺ {i + 1}</span> {r}</li>)}
         </ol>
