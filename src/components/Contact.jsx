@@ -25,6 +25,7 @@ export default function Contact() {
         <h3 className="contact-big">
           {t('contact.l1')}<br />
           {t('contact.l2a')}<span className="hl">{t('contact.hl')}</span>{t('contact.l2b')}
+          {t('contact.l3') && <><br />{t('contact.l3')}</>}
         </h3>
         <p className="contact-sub">{t('contact.sub')}</p>
         <div className="contact-mail">
